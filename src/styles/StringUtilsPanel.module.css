@@ -1,0 +1,38 @@
+.stringUtilsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.stringUtilsHeaderContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.stringUtilsTitle {
+    font-weight: bold;
+    flex: 1;
+    max-height: 40px;
+    width: 100%;
+}
+
+.stringUtilsTextArea {
+    flex: 1;
+    margin: 10px;
+}
+
+.stringUtilsToolButtonContainer {
+    display: flex;
+    flex-direction: row;
+    max-height: 50px;
+}
+
+.stringUtilsToolButton {
+    flex: 1;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    margin: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,98 @@
+.menu, .menuAnimated {
+    position: absolute;
+    height: 100%;
+    background: #002746;
+    color: #ffffff;
+    padding-top: 50px;
+    border-right: 1px solid #005ca3;
+}
+
+.menuAnimated {
+    animation: collapsing .2s ease-in-out;
+}
+
+.menuAnimated.expanded {
+    width: 200px;
+    animation: expanding .2s ease-in-out;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    user-select: none;
+    color: transparent;
+    white-space: nowrap;
+    border: 1px solid #ffffff;
+}
+
+.button:hover {
+    background: #004275;
+}
+
+.button.expanded {
+    color: #000000;
+    justify-content: center;
+}
+
+.button.selected {
+    background: #005ca3;
+}
+
+/* .button:nth-child(2) {
+    background: #ffffff;
+} */
+
+.buttonText {
+    flex: 1;
+    line-height: 50px;
+    display: none;
+    visibility: hidden;
+}
+
+.buttonText.expanded {
+    display: block;
+    visibility: visible;
+    color: #ffffff;
+    animation: showText .2s;
+}
+
+.iconContainer {
+    width: 50px;
+    max-width: 50px;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    flex: 1;
+    width: 30px;
+    height: 50px;
+    max-width: 30px;
+    max-height: 50px;
+    min-width: 30px;
+    min-height: 50px;
+    fill: #f9f9f9;
+    filter: invert(.95);
+}
+
+@keyframes expanding {
+    from {width: 50px;}
+    to {width: 200px;}
+  }
+
+@keyframes collapsing {
+    from {width: 200px;}
+    to {width: 50px;}
+  }
+
+@keyframes showText {
+    0% {visibility: hidden;
+        width: 0px;}
+    99% {visibility: hidden;
+        width: 0px;}
+    100% {visibility: visible;
+        width: 100%;}
+}
+

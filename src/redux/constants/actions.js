@@ -1,0 +1,2 @@
+export const OPEN_LANDING_PAGE = 'OPEN_LANDING_PAGE';
+export const SELECT_TOOL = 'SELECT_TOOL';
