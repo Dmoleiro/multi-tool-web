@@ -42,9 +42,9 @@ class CalculatorPanel extends Component {
     }
 
     render() {
-        let allBooks = this.state.books.map((bookName) => (
-            <h3>{bookName}</h3>
-        ));
+        // let allBooks = this.state.books.map((bookName) => (
+        //     <h3>{bookName}</h3>
+        // ));
         return (
             <div>
                 {/* {allBooks} */}

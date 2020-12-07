@@ -7,7 +7,7 @@ import LandingPage from './containers/LandingPage';
 // Redux Library Packages 
 import { Provider } from "react-redux";
 import createSagaMiddleware from 'redux-saga';
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { logger } from 'redux-logger';
 
 import rootReducer from "./redux/reducers/index";
