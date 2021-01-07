@@ -1,55 +1,211 @@
 import React, { Component } from 'react';
+import styles from '../styles/CalculatorPanel.module.css';
+import backIcon from '../icons/back.svg';
+import { calculatorConstants } from '../constants/CalculatorConstants';
 
 class CalculatorPanel extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            books: ['sem saída', 
-                    'olhar dos inocentes', 
-                    'ao fechar a porta', 
-                    'ave de mau agoiro', 
-                    'os diários secretos', 
-                    'a rapariga fatal',
-                    'um do li ta',
-                    'a menina silenciosa',
-                    'a rapariga no gelo',
-                    'teia de cinzas',
-                    'alguem esta a mentir',
-                    'sem saida hunter',
-                    'o morcego',
-                    'baratas',
-                    'mal me quer',
-                    ],
-            bookName: ''
+            firstParcel: undefined,
+            secondParcel: undefined,
+            operation: undefined,
+            result: undefined,
+            invalidInput: false
         };
     }
 
-    getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-      }
+    handleButtonClick(value = undefined) {
+        let currFirstParcel = this.state.firstParcel;
+        let currSecondParcel = this.state.secondParcel;
+        let currOperation = this.state.operation;
+        let currResult = this.state.result;
+        switch(value) {
+            case calculatorConstants.ONE:
+            case calculatorConstants.TWO:
+            case calculatorConstants.THREE:
+            case calculatorConstants.FOUR:
+            case calculatorConstants.FIVE:
+            case calculatorConstants.SIX:
+            case calculatorConstants.SEVEN:
+            case calculatorConstants.EIGHT:
+            case calculatorConstants.NINE:
+            case calculatorConstants.ZERO:
+            case calculatorConstants.DOT:
+                if (!currResult) {
+                    if (currOperation) {
+                        this.setState({
+                            ...this.state,
+                            secondParcel: currSecondParcel ? currSecondParcel.concat(value) : value,
+                            invalidInput: false,
+                        });
+                    } else {
+                        this.setState({
+                            ...this.state,
+                            firstParcel: currFirstParcel ? currFirstParcel.concat(value) : value,
+                            invalidInput: false,
+                        });
+                    }
+                }
+                break;
+            case calculatorConstants.SUM:
+            case calculatorConstants.SUBTRACT:
+            case calculatorConstants.MULTIPLICATION:
+            case calculatorConstants.DIVIDE:
+                if (!currResult && currFirstParcel) {
+                    this.setState({
+                        ...this.state,
+                        operation: value,
+                        invalidInput: false,
+                    });
+                }   
+            break;
+            case calculatorConstants.CLEAR:
+                this.clearValues();
+                break;
+            case calculatorConstants.EQUALS:
+                this.calculateResult();
+                break;
+            default:
+                break;
+        }
+    }
 
-    getRandomBook() {
-        let randomIndex = this.getRandomInt(0, this.state.books.length);
-        let bookName = this.state.books[randomIndex];
+    calculateResult() {
+        let result;
+        let firstParcel = Number(this.state.firstParcel);
+        let secondParcel = Number(this.state.secondParcel);
 
+        if (isNaN(firstParcel) || isNaN(secondParcel)) {
+            this.setState({
+                ...this.state,
+                invalidInput: true,
+            })
+            return;
+        }
+
+        switch(this.state.operation) {
+            case calculatorConstants.SUM:
+                result = Number(this.state.firstParcel) + Number(this.state.secondParcel);
+                break;
+            case calculatorConstants.SUBTRACT:
+                result = Number(this.state.firstParcel) - Number(this.state.secondParcel);
+                break;
+            case calculatorConstants.MULTIPLICATION:
+                result = Number(this.state.firstParcel) * Number(this.state.secondParcel);
+                break;
+            case calculatorConstants.DIVIDE:
+                result = Number(this.state.firstParcel) / Number(this.state.secondParcel);
+                break;
+            default:
+                break;
+        }
         this.setState({
             ...this.state,
-            bookName
+            result,
+            invalidInput: false,
+        });
+    }
+
+    clearValues() {
+        this.setState({
+            firstParcel: undefined,
+            secondParcel: undefined,
+            operation: undefined,
+            result: undefined,
+            invalidInput: false
         })
     }
 
+    getDisplayValues() {
+        let firstParcel = this.state.firstParcel;
+        let secondParcel = this.state.secondParcel;
+        let operation = this.state.operation;
+        let result = this.state.result;
+        return `${firstParcel ? firstParcel : ''} ${operation ? operation : ''} ${secondParcel ? secondParcel : ''} ${result ? '= ' + result : ''}`
+    }
+
     render() {
-        // let allBooks = this.state.books.map((bookName) => (
-        //     <h3>{bookName}</h3>
-        // ));
         return (
-            <div>
-                {/* {allBooks} */}
-                <button onClick={this.getRandomBook.bind(this)}>Descobrir novo livro</button>
-                <h1>{this.state.bookName}</h1>
+            <div className={styles.calculatorContainer}>
+                <div className={styles.calculatorHeaderContainer}>
+                    <label className={styles.calculatorTitle}>Calculator </label>
+                    <div className={styles.calculatorBackButtonContainer}>
+                        <div className={styles.iconContainer}>
+                            <img className={styles.icon} src={backIcon} alt="Back to main menu" title="Back to main menu" />
+                        </div> 
+                    </div>                    
+                </div>
+                <div className={styles.calculatorPanel}>
+                    <div className={styles.calculatorDisplay}>
+                        {this.getDisplayValues()}
+                    <div className={styles.invalidInput}>
+                        {`${this.state.invalidInput ? 'Invalid input' : ''}`}
+                    </div>
+                    </div>
+                    <div className={styles.calculatorRow}>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.ONE)}>
+                            <div className={styles.calculatorButtonText}>1</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.TWO)}>
+                            <div className={styles.calculatorButtonText}>2</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.THREE)}>
+                            <div className={styles.calculatorButtonText}>3</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.SUM)}>
+                            <div className={styles.calculatorButtonText}>+</div>
+                        </div>
+                    </div>
+                    <div className={styles.calculatorRow}>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.FOUR)}>
+                            <div className={styles.calculatorButtonText}>4</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.FIVE)}>
+                            <div className={styles.calculatorButtonText}>5</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.SIX)}>
+                            <div className={styles.calculatorButtonText}>6</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.SUBTRACT)}>
+                            <div className={styles.calculatorButtonText}>-</div>
+                        </div>
+                    </div>
+                    <div className={styles.calculatorRow}>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.SEVEN)}>
+                            <div className={styles.calculatorButtonText}>7</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.EIGHT)}>
+                            <div className={styles.calculatorButtonText}>8</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.NINE)}>
+                            <div className={styles.calculatorButtonText}>9</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.MULTIPLICATION)}>
+                            <div className={styles.calculatorButtonText}>x</div>
+                        </div>
+                    </div>
+                    <div className={styles.calculatorRow}>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.ZERO)}>
+                            <div className={styles.calculatorButtonText}>0</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.CLEAR)}>
+                            <div className={styles.calculatorButtonText}>C</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.DOT)}>
+                            <div className={styles.calculatorButtonText}>.</div>
+                        </div>
+                        <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.DIVIDE)}>
+                            <div className={styles.calculatorButtonText}>/</div>
+                        </div>
+                    </div>
+                    <div className={styles.calculatorRow}>
+                    <div className={styles.calculatorButton} onClick={() => this.handleButtonClick(calculatorConstants.EQUALS)}>
+                            <div className={styles.calculatorButtonText}>=</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

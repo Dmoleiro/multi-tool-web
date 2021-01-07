@@ -1,0 +1,145 @@
+.calculatorContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.calculatorHeaderContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.calculatorTitle, .calculatorBackButtonContainer {
+    font-weight: bold;
+    flex: 1;
+    max-height: 40px;
+    width: 100%;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.calculatorBackButtonContainer {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.iconContainer {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.iconContainer:hover {
+    background: #004275;
+}
+
+
+.icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(.95);
+}
+
+.calculatorPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    margin: auto;
+    color: #ffffff;
+}
+
+.calculatorDisplay {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    line-height: 50px;
+    height: 50px;
+    max-width: 400px;
+    border: 1px solid #ffffff;
+    background: #ffffff;
+    color: #002746;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold;
+    font-size: 20px;
+    overflow: auto;
+}
+
+.invalidInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 15px;
+    font-weight: normal;
+    font-size: 15px;
+    color: #ff0000;
+}
+
+.calculatorRow, .calculatorDisplay {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.calculatorRow:last-child > .calculatorButton:first-child{
+    border-radius: 0 0 0 3px;
+}
+
+.calculatorRow:last-child > .calculatorButton:last-child{
+    border-radius: 0 0 3px 0;
+}
+
+.calculatorRow:last-child > .calculatorButton{
+    background: #002746;
+}
+
+.calculatorRow:nth-last-child(2) > .calculatorButton{
+    background: #002746;
+}
+
+.calculatorRow:nth-last-child(2) > .calculatorButton:first-child{
+    background: #004275;
+}
+
+.calculatorRow:last-child > .calculatorButton{
+    background: #002746;
+}
+
+.calculatorRow:nth-last-child(2) > .calculatorButton:hover{
+    background: #ffffff;
+}
+
+.calculatorRow:last-child > .calculatorButton:hover{
+    background: #ffffff;
+}
+
+.calculatorButton:last-child{
+    background: #002746;
+}
+
+.calculatorButton {
+    flex: 1;
+    display: flex;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    align-items: center;
+    background: #004275;
+}
+
+.calculatorButton:hover {
+    background: #ffffff;
+    color: #002746;
+}
+
+.calculatorButtonText {
+    flex: 1;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}

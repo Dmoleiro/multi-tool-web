@@ -4,7 +4,7 @@ class MarkupPanel extends Component {
     render() {
         return (
             <div>
-                Markup Panel
+                Not available yet...
             </div>
         );
     }

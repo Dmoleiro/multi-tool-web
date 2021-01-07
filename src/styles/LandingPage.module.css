@@ -1,4 +1,6 @@
 .menuContainer {
+    overflow: hidden;
+    background: #005ca3;
     display: flex;
     position: absolute;
     height: 100%;

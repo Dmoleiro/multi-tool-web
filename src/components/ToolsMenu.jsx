@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {selectToolPanel} from '../redux/actions/systemActions';
-import {STRING_UTILS_PANEL, CALCULATOR_PANEL, MARKUP_PANEL} from '../constants/NavigationConstants';
+import {STRING_UTILS_PANEL, CALCULATOR_PANEL, MARKUP_PANEL, RANDOMIZE_BOOKS_PANEL} from '../constants/NavigationConstants';
 import styles from '../styles/ToolsMenu.module.css';
 import stringUtilsIcon from '../icons/sbutton.svg';
 import calculatorIcon from '../icons/calculator.svg';
 import markupEditorIcon from '../icons/poster.svg';
+import randomizeBooksIcon from '../icons/book.svg';
 
 export const ToolsMenu = () => {
     let globalState = useSelector(state => state);
@@ -49,6 +50,15 @@ export const ToolsMenu = () => {
                     <img className={styles.icon} src={markupEditorIcon} alt="Markup Editor" />
                 </div>
                 <div className={`${styles.buttonText} ${state.menuExpanded ? styles.expanded : ''}`}>Markup Editor</div>
+            </div>
+            <div 
+                className={`${styles.button} ${state.menuExpanded ? styles.expanded : ''} ${globalState.systemReducer.openToolIdx === RANDOMIZE_BOOKS_PANEL ? styles.selected : ''}`} 
+                onClick={() => dispatch(selectToolPanel(RANDOMIZE_BOOKS_PANEL))}
+            >
+                <div className={styles.iconContainer}>
+                    <img className={styles.icon} src={randomizeBooksIcon} alt="Randomize Books" />
+                </div>
+                <div className={`${styles.buttonText} ${state.menuExpanded ? styles.expanded : ''}`}>Randomize Books</div>
             </div>
         </div>
     );

@@ -23,7 +23,6 @@
     user-select: none;
     color: transparent;
     white-space: nowrap;
-    border: 1px solid #ffffff;
 }
 
 .button:hover {
@@ -37,11 +36,8 @@
 
 .button.selected {
     background: #005ca3;
+    border-right: none;
 }
-
-/* .button:nth-child(2) {
-    background: #ffffff;
-} */
 
 .buttonText {
     flex: 1;

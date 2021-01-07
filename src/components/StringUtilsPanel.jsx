@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../styles/StringUtilsPanel.module.css';
+import backIcon from '../icons/back.svg';
 import { replaceCRLFWithCommas, replaceCommasWithCRLF } from '../helpers/StringHelpers';
 
 class StringUtilsPanel extends Component {
@@ -12,8 +13,13 @@ class StringUtilsPanel extends Component {
 
         this.handleChange = this.handleChange.bind(this);
     }
+
     handleChange(evt) {
         this.setState({ textAreaValue: evt.target.value });
+    }
+
+    handleFocus(evt) {
+        evt?.target?.select()
     }
 
     replaceCRLFWithCommas() {
@@ -31,13 +37,18 @@ class StringUtilsPanel extends Component {
             <div className={styles.stringUtilsContainer}>
                 <div className={styles.stringUtilsHeaderContainer}>
                     <label className={styles.stringUtilsTitle}>String Utils </label>
-                    <div >Back to Main Menu</div>
+                    <div className={styles.stringUtilsBackButtonContainer}>
+                        <div className={styles.iconContainer}>
+                            <img className={styles.icon} src={backIcon} alt="Back to main menu" title="Back to main menu" />
+                        </div> 
+                    </div>                    
                 </div>
                 
                 <textarea
                 className={styles.stringUtilsTextArea}
                 value={this.state.textAreaValue}
                 onChange={this.handleChange}
+                onFocus={this.handleFocus}
                 />
                 <div className={styles.stringUtilsToolButtonContainer}>
                     <div className={styles.stringUtilsToolButton} onClick={this.replaceCRLFWithCommas.bind(this)}>Replace CRLF with commas</div>

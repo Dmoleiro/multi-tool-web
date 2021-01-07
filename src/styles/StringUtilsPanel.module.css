@@ -2,37 +2,75 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
 }
 
 .stringUtilsHeaderContainer {
     display: flex;
-    width: 100%;
     justify-content: space-evenly;
+    padding: 10px;
 }
 
-.stringUtilsTitle {
+.stringUtilsTitle, .stringUtilsBackButtonContainer {
     font-weight: bold;
     flex: 1;
     max-height: 40px;
     width: 100%;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.stringUtilsBackButtonContainer {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.iconContainer {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.iconContainer:hover {
+    background: #004275;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(.95);
 }
 
 .stringUtilsTextArea {
     flex: 1;
     margin: 10px;
+    background: #005ca3;
+    border: 1px solid white;
+    border-radius: 3px;
+    color: white;
 }
 
 .stringUtilsToolButtonContainer {
     display: flex;
     flex-direction: row;
     max-height: 50px;
+    padding: 0 10px 5px 10px;
 }
 
 .stringUtilsToolButton {
     flex: 1;
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
+    color: #ffffff;
     border-radius: 3px;
-    margin: 5px;
+    margin-right: 5px;
     cursor: pointer;
+}
+
+.stringUtilsToolButton:nth-child(2) {
+    margin-left: 5px;
+    margin-right: 0;
 }
