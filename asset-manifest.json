@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/multi-tool-web/static/css/main.53f932b4.chunk.css",
+    "main.js": "/multi-tool-web/static/js/main.e6dd705f.chunk.js",
+    "main.js.map": "/multi-tool-web/static/js/main.e6dd705f.chunk.js.map",
+    "runtime-main.js": "/multi-tool-web/static/js/runtime-main.e2075c85.js",
+    "runtime-main.js.map": "/multi-tool-web/static/js/runtime-main.e2075c85.js.map",
+    "static/js/2.a3037ac8.chunk.js": "/multi-tool-web/static/js/2.a3037ac8.chunk.js",
+    "static/js/2.a3037ac8.chunk.js.map": "/multi-tool-web/static/js/2.a3037ac8.chunk.js.map",
+    "static/js/3.66ad7b78.chunk.js": "/multi-tool-web/static/js/3.66ad7b78.chunk.js",
+    "static/js/3.66ad7b78.chunk.js.map": "/multi-tool-web/static/js/3.66ad7b78.chunk.js.map",
+    "index.html": "/multi-tool-web/index.html",
+    "static/css/main.53f932b4.chunk.css.map": "/multi-tool-web/static/css/main.53f932b4.chunk.css.map",
+    "static/js/2.a3037ac8.chunk.js.LICENSE.txt": "/multi-tool-web/static/js/2.a3037ac8.chunk.js.LICENSE.txt",
+    "static/media/back.eaf5d7b5.svg": "/multi-tool-web/static/media/back.eaf5d7b5.svg",
+    "static/media/book.dc7636a0.svg": "/multi-tool-web/static/media/book.dc7636a0.svg",
+    "static/media/calculator.691eb08d.svg": "/multi-tool-web/static/media/calculator.691eb08d.svg",
+    "static/media/poster.9ae90c85.svg": "/multi-tool-web/static/media/poster.9ae90c85.svg",
+    "static/media/sbutton.891993cd.svg": "/multi-tool-web/static/media/sbutton.891993cd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2075c85.js",
+    "static/js/2.a3037ac8.chunk.js",
+    "static/css/main.53f932b4.chunk.css",
+    "static/js/main.e6dd705f.chunk.js"
+  ]
+}
