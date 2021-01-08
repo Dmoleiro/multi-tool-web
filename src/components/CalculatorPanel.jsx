@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styles from '../styles/CalculatorPanel.module.css';
 import backIcon from '../icons/back.svg';
 import { calculatorConstants } from '../constants/CalculatorConstants';
+import { selectToolPanel } from '../redux/actions/systemActions';
+import { MAIN_MENU_PANEL } from '../constants/NavigationConstants';
 
 class CalculatorPanel extends Component {
     constructor(props) {
@@ -126,6 +128,13 @@ class CalculatorPanel extends Component {
         return `${firstParcel ? firstParcel : ''} ${operation ? operation : ''} ${secondParcel ? secondParcel : ''} ${result ? '= ' + result : ''}`
     }
 
+    backToMainMenu() {
+        let store = this.props.store;
+        if (store) {
+            store.dispatch(selectToolPanel(MAIN_MENU_PANEL));
+        }
+    }
+
     render() {
         return (
             <div className={styles.calculatorContainer}>
@@ -133,7 +142,7 @@ class CalculatorPanel extends Component {
                     <label className={styles.calculatorTitle}>Calculator </label>
                     <div className={styles.calculatorBackButtonContainer}>
                         <div className={styles.iconContainer}>
-                            <img className={styles.icon} src={backIcon} alt="Back to main menu" title="Back to main menu" />
+                            <img className={styles.icon} onClick={() => this.backToMainMenu()} src={backIcon} alt="Back to main menu" title="Back to main menu" />
                         </div> 
                     </div>                    
                 </div>

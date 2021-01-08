@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styles from '../styles/StringUtilsPanel.module.css';
 import backIcon from '../icons/back.svg';
 import { replaceCRLFWithCommas, replaceCommasWithCRLF } from '../helpers/StringHelpers';
+import { selectToolPanel } from '../redux/actions/systemActions';
+import { MAIN_MENU_PANEL } from '../constants/NavigationConstants';
 
 class StringUtilsPanel extends Component {
     constructor(props) {
@@ -31,6 +33,13 @@ class StringUtilsPanel extends Component {
         let newText = replaceCommasWithCRLF(this.state.textAreaValue);
         this.setState({ textAreaValue: newText });
     }
+
+    backToMainMenu() {
+        let store = this.props.store;
+        if (store) {
+            store.dispatch(selectToolPanel(MAIN_MENU_PANEL));
+        }
+    }
     
     render() {
         return (
@@ -39,7 +48,7 @@ class StringUtilsPanel extends Component {
                     <label className={styles.stringUtilsTitle}>String Utils </label>
                     <div className={styles.stringUtilsBackButtonContainer}>
                         <div className={styles.iconContainer}>
-                            <img className={styles.icon} src={backIcon} alt="Back to main menu" title="Back to main menu" />
+                            <img className={styles.icon} onClick={() => this.backToMainMenu()} src={backIcon} alt="Back to main menu" title="Back to main menu" />
                         </div> 
                     </div>                    
                 </div>

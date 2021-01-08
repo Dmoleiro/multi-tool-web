@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import {selectToolPanel} from '../redux/actions/systemActions';
-import {STRING_UTILS_PANEL, CALCULATOR_PANEL, MARKUP_PANEL, RANDOMIZE_BOOKS_PANEL} from '../constants/NavigationConstants';
+import {STRING_UTILS_PANEL, CALCULATOR_PANEL, MARKDOWN_PANEL, RANDOMIZE_BOOKS_PANEL} from '../constants/NavigationConstants';
 import styles from '../styles/ToolsMenu.module.css';
 import stringUtilsIcon from '../icons/sbutton.svg';
 import calculatorIcon from '../icons/calculator.svg';
@@ -43,13 +43,13 @@ export const ToolsMenu = () => {
                 <div className={`${styles.buttonText} ${state.menuExpanded ? styles.expanded : ''}`}>Calculator</div>
             </div>
             <div 
-                className={`${styles.button} ${state.menuExpanded ? styles.expanded : ''} ${globalState.systemReducer.openToolIdx === MARKUP_PANEL ? styles.selected : ''}`} 
-                onClick={() => dispatch(selectToolPanel(MARKUP_PANEL))}
+                className={`${styles.button} ${state.menuExpanded ? styles.expanded : ''} ${globalState.systemReducer.openToolIdx === MARKDOWN_PANEL ? styles.selected : ''}`} 
+                onClick={() => dispatch(selectToolPanel(MARKDOWN_PANEL))}
             >
                 <div className={styles.iconContainer}>
-                    <img className={styles.icon} src={markupEditorIcon} alt="Markup Editor" />
+                    <img className={styles.icon} src={markupEditorIcon} alt="Markdown Editor" />
                 </div>
-                <div className={`${styles.buttonText} ${state.menuExpanded ? styles.expanded : ''}`}>Markup Editor</div>
+                <div className={`${styles.buttonText} ${state.menuExpanded ? styles.expanded : ''}`}>Markdown Editor</div>
             </div>
             <div 
                 className={`${styles.button} ${state.menuExpanded ? styles.expanded : ''} ${globalState.systemReducer.openToolIdx === RANDOMIZE_BOOKS_PANEL ? styles.selected : ''}`} 

@@ -2,11 +2,11 @@
 // import LandingPage from '../containers/LandingPage';
 import React from 'react';
 import { getSelectedPanel } from '../helpers/NavigationHelpers';
-import { MAIN_MENU_PANEL, STRING_UTILS_PANEL, CALCULATOR_PANEL, MARKUP_PANEL } from '../constants/NavigationConstants';
+import { MAIN_MENU_PANEL, STRING_UTILS_PANEL, CALCULATOR_PANEL, MARKDOWN_PANEL } from '../constants/NavigationConstants';
 import MainMenu from '../components/MainMenu';
 import StringUtilsPanel from '../components/StringUtilsPanel';
 import CalculatorPanel from '../components/CalculatorPanel';
-import MarkupPanel from '../components/MarkupPanel';
+import MarkdownPanel from '../components/MarkdownPanel';
 import { replaceCRLFWithCommas, replaceCommasWithCRLF } from '../helpers/StringHelpers';
 
 describe ('Test Navigation Helpers', () => {
@@ -24,8 +24,8 @@ describe ('Test Navigation Helpers', () => {
     expect(selectedPanel).toEqual(<CalculatorPanel/>);
   });
   it ('getSelectedPanel returns Markup', () => {
-    selectedPanel = getSelectedPanel(MARKUP_PANEL);
-    expect(selectedPanel).toEqual(<MarkupPanel/>);
+    selectedPanel = getSelectedPanel(MARKDOWN_PANEL);
+    expect(selectedPanel).toEqual(<MarkdownPanel/>);
   });
   it ('getSelectedPanel returns null', () => {
     selectedPanel = getSelectedPanel('x');

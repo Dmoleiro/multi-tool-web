@@ -1,3 +1,22 @@
-.buttonsContainer {
+.mainContainer {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo {
+    flex: 1;
+    max-height: 100px;
+    max-width: 100px;
+    margin-top: 150px;
+}
+
+.welcomeText {
+    flex: 1;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 40px;
 }

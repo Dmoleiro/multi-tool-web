@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class MarkupPanel extends Component {
+class MarkdownPanel extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class MarkupPanel extends Component {
     }
 }
 
-export default MarkupPanel;
+export default MarkdownPanel;

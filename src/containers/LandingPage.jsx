@@ -4,9 +4,9 @@ import styles from '../styles/LandingPage.module.css'
 import { getSelectedPanel } from '../helpers/NavigationHelpers';
 import ToolsMenu from '../components/ToolsMenu';
 
-function LandingPage() {
+function LandingPage(props) {
     let globalState = useSelector(state => state);
-    let panel = getSelectedPanel(globalState.systemReducer.openToolIdx)
+    let panel = getSelectedPanel(globalState.systemReducer.openToolIdx, props.store)
     return (
         <div className={styles.menuContainer}>
             <ToolsMenu/>
